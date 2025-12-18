@@ -56,7 +56,6 @@
         pointer-events: none;
         z-index: 10001;
         transition: transform 0.1s ease-out;
-        /* Blend mode ensures white turns black on white surfaces */
         mix-blend-mode: difference;
       }
       #cursor-circle {
@@ -69,7 +68,6 @@
         z-index: 10000;
         transition: width 0.3s, height 0.3s, background 0.3s, transform 0.15s ease-out, border-color 0.3s;
         transform: translate(-50%, -50%);
-        /* Blend mode ensures border turns black on white surfaces */
         mix-blend-mode: difference;
       }
       .hover-active #cursor-circle {
@@ -114,6 +112,10 @@
     <div id="cursor-circle"></div>
     <div class="mesh-gradient" id="mesh"></div>
     <div id="root"></div>
+    
+    <!-- Explicitly load the entry point with extension -->
+    <script type="module" src="index.tsx"></script>
+
     <script>
       const dot = document.getElementById('cursor-dot');
       const circle = document.getElementById('cursor-circle');

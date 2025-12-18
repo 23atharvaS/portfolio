@@ -1,4 +1,4 @@
-import { Project, NavItem, Publication, Experience, Education, SkillCategory, Hackathon, Certificate } from './types';
+import { Project, NavItem, Publication, Experience, Education, SkillCategory, Hackathon, Certificate } from './types.ts';
 import { Linkedin, Mail } from 'lucide-react';
 
 export const NAV_ITEMS: NavItem[] = [

@@ -1,13 +1,16 @@
 import React from 'react';
-import { Card } from './components/Card';
-import { Footer } from './components/Footer';
-import { FadeIn } from './components/FadeIn';
-import { PROJECTS, EXPERIENCE, EDUCATION, SKILLS, RESEARCH } from './constants';
+import { Card } from './components/Card.tsx';
+import { Footer } from './components/Footer.tsx';
+import { Navbar } from './components/Navbar.tsx';
+import { FadeIn } from './components/FadeIn.tsx';
+import { PROJECTS, EXPERIENCE, EDUCATION, SKILLS, RESEARCH } from './constants.ts';
 import { ArrowRight, Sparkles, Binary, Layers, Globe2, ArrowUpRight, FileText } from 'lucide-react';
 
 const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-background text-primary selection:bg-accent selection:text-white">
+      <Navbar />
+      
       {/* Hero: Immersive Launch Style */}
       <section id="about" className="relative h-screen px-6 flex flex-col justify-center items-center text-center overflow-hidden">
         <FadeIn delay={400}>
@@ -153,7 +156,7 @@ const App: React.FC = () => {
                                 {...wrapperProps}
                                 className={`block relative min-h-[250px] p-10 rounded-[2.5rem] bg-black/5 hover:bg-black transition-all duration-700 group overflow-hidden ${isLink ? 'interactive' : ''}`}
                             >
-                                {/* Default Content: Fades out on hover */}
+                                {/* Default Content */}
                                 <div className="relative z-10 group-hover:opacity-0 group-hover:scale-95 group-hover:-translate-y-4 transition-all duration-500 ease-in-out">
                                     <h3 className="text-2xl font-display font-bold mb-4">{res.title}</h3>
                                     <p className="text-black/60 leading-relaxed font-light">
@@ -161,7 +164,7 @@ const App: React.FC = () => {
                                     </p>
                                 </div>
 
-                                {/* Hover Content: Fades in on hover */}
+                                {/* Hover Content */}
                                 {isLink && (
                                     <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 scale-110 group-hover:opacity-100 group-hover:scale-100 transition-all duration-700 ease-out z-20 px-8 text-center">
                                         <div className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center mb-6 shadow-2xl">
@@ -174,7 +177,6 @@ const App: React.FC = () => {
                                     </div>
                                 )}
 
-                                {/* Fallback for non-linked research (minimal hover effect) */}
                                 {!isLink && (
                                   <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors pointer-events-none" />
                                 )}

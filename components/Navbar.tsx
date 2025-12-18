@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NAV_ITEMS } from '../constants';
+import { NAV_ITEMS } from '../constants.ts';
 
 export const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);

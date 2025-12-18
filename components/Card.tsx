@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import { Project } from '../types';
+import { Project } from '../types.ts';
 
 interface CardProps {
   data: Project;
