@@ -1,23 +1,28 @@
+
 import React from 'react';
 import { Card } from './components/Card.tsx';
 import { Footer } from './components/Footer.tsx';
 import { FadeIn } from './components/FadeIn.tsx';
+import { FloatingArtifacts } from './components/FloatingArtifacts.tsx';
 import { PROJECTS, EXPERIENCE, EDUCATION, SKILLS, RESEARCH } from './constants.ts';
 import { ArrowRight, Sparkles, Binary, Layers, Globe2, ArrowUpRight, FileText } from 'lucide-react';
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-background text-primary selection:bg-accent selection:text-white">
-      {/* Hero: Immersive Launch Style */}
-      <section id="about" className="relative h-screen px-6 flex flex-col justify-center items-center text-center overflow-hidden">
-        <FadeIn delay={400}>
-          <h1 className="font-display text-[12vw] md:text-[8vw] font-bold tracking-[-0.05em] leading-[0.85] mb-8">
+    <div className="min-h-screen bg-background text-primary selection:bg-accent selection:text-white relative">
+      {/* Floating Artifacts Layer - Interactivity is enabled here */}
+      <FloatingArtifacts />
+      
+      {/* Hero Section */}
+      <section id="about" className="relative h-screen px-6 flex flex-col justify-center items-center text-center overflow-hidden z-10 pointer-events-none">
+        <FadeIn delay={400} className="pointer-events-auto">
+          <h1 className="font-display text-[12vw] md:text-[8vw] font-bold tracking-[-0.05em] length-[0.85] mb-8">
             Atharva <br />
             <span className="text-secondary/20">Sawant.</span>
           </h1>
         </FadeIn>
 
-        <FadeIn delay={600} className="max-w-2xl">
+        <FadeIn delay={600} className="max-w-2xl pointer-events-auto">
           <p className="text-xl md:text-2xl font-light text-secondary leading-relaxed tracking-tight mb-12">
             Applied Artificial Intelligence Engineer at <span className="text-white font-medium">Stevens Institute of Technology</span>. 
             Optimizing high-performance neural networks for real-time impact.
@@ -41,8 +46,8 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Featured Projects Section: Gallery Style */}
-      <section id="work" className="py-48 px-6 max-w-7xl mx-auto">
+      {/* Featured Projects Section */}
+      <section id="work" className="relative py-48 px-6 max-w-7xl mx-auto z-10">
         <FadeIn className="mb-32">
           <h2 className="text-[10vw] font-display font-bold tracking-tighter leading-none opacity-10 absolute -left-10 top-0 select-none">PROJECTS</h2>
           <p className="text-6xl md:text-8xl font-display font-bold tracking-tighter relative z-10">Selected <br /> <span className="text-secondary">Artifacts.</span></p>
@@ -57,8 +62,8 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Experience Section: Vertical Product List */}
-      <section id="experience" className="py-48 bg-surface">
+      {/* Experience Section - Now using the same Glassmorphism Style */}
+      <section id="experience" className="relative py-48 bg-white/[0.03] backdrop-blur-3xl border border-white/10 text-white rounded-[5rem] z-10 mx-4 md:mx-10 my-20">
         <div className="max-w-6xl mx-auto px-6">
           <FadeIn className="mb-32">
             <h2 className="text-5xl md:text-7xl font-display font-bold tracking-tighter">Experience <br /> <span className="text-accent">& Impact.</span></h2>
@@ -91,8 +96,8 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Skills: Dynamic Icon Grid */}
-      <section id="skills" className="py-48 px-6 max-w-7xl mx-auto">
+      {/* Skills Section */}
+      <section id="skills" className="relative py-48 px-6 max-w-7xl mx-auto z-10">
         <FadeIn className="text-center mb-32">
             <p className="text-accent font-bold uppercase tracking-[0.4em] text-sm mb-6">Capabilities</p>
             <h2 className="text-6xl md:text-8xl font-display font-bold tracking-tighter">Tools for <br /> Intelligence.</h2>
@@ -122,8 +127,8 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Education & Research: The Archive */}
-      <section id="research" className="py-48 bg-white text-black rounded-[5rem]">
+      {/* Education & Research Section - Glassmorphism Style */}
+      <section id="research" className="relative py-48 bg-white/[0.03] backdrop-blur-3xl border border-white/10 text-white rounded-[5rem] z-10 mx-4 md:mx-10 my-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-32">
              <FadeIn>
@@ -133,7 +138,7 @@ const App: React.FC = () => {
                         <div key={edu.id} className="group">
                             <span className="text-sm font-bold text-accent uppercase tracking-[0.2em] mb-4 block">{edu.period}</span>
                             <h3 className="text-3xl font-display font-bold mb-2 group-hover:translate-x-2 transition-transform">{edu.school}</h3>
-                            <p className="text-xl text-black/60 font-light">{edu.degree}</p>
+                            <p className="text-xl text-secondary font-light">{edu.degree}</p>
                         </div>
                     ))}
                 </div>
@@ -151,17 +156,15 @@ const App: React.FC = () => {
                             <Wrapper 
                                 key={res.id} 
                                 {...wrapperProps}
-                                className={`block relative min-h-[250px] p-10 rounded-[2.5rem] bg-black/5 transition-all duration-700 group overflow-hidden ${isLink ? 'interactive hover:bg-black' : ''}`}
+                                className={`block relative min-h-[250px] p-10 rounded-[2.5rem] bg-white/[0.05] border border-white/5 transition-all duration-700 group overflow-hidden ${isLink ? 'interactive hover:bg-accent/10 hover:border-accent/40' : ''}`}
                             >
-                                {/* Default Content - transformations only applied if it's a link */}
                                 <div className={`relative z-10 transition-all duration-500 ease-in-out ${isLink ? 'group-hover:opacity-0 group-hover:scale-95 group-hover:-translate-y-4' : ''}`}>
                                     <h3 className="text-2xl font-display font-bold mb-4">{res.title}</h3>
-                                    <p className="text-black/60 leading-relaxed font-light">
+                                    <p className="text-secondary leading-relaxed font-light">
                                       {res.description}
                                     </p>
                                 </div>
 
-                                {/* Hover Content */}
                                 {isLink && (
                                     <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 scale-110 group-hover:opacity-100 group-hover:scale-100 transition-all duration-700 ease-out z-20 px-8 text-center">
                                         <div className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center mb-6 shadow-2xl">
@@ -175,7 +178,7 @@ const App: React.FC = () => {
                                 )}
 
                                 {!isLink && (
-                                  <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors pointer-events-none" />
+                                  <div className="absolute inset-0 bg-white/5 group-hover:bg-white/10 transition-colors pointer-events-none" />
                                 )}
                             </Wrapper>
                         );
@@ -186,19 +189,20 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Contact: Cinematic Finale */}
-      <section id="contact" className="py-64 px-6 text-center">
+      {/* Contact Section */}
+      <section id="contact" className="relative py-64 px-6 text-center z-10">
         <FadeIn>
           <h2 className="text-[15vw] md:text-[10vw] font-display font-bold tracking-tighter leading-none mb-24">
             LET'S <br /> <span className="text-secondary/20">CONNECT.</span>
           </h2>
           <div className="flex flex-col items-center gap-12">
             <a 
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=asawant10@stevens.edu"
+              href="https://linkedin.com/in/atharva2004"
               target="_blank"
+              rel="noopener noreferrer"
               className="interactive group flex items-center gap-6 text-3xl md:text-5xl font-display font-bold transition-all"
             >
-              asawant10@stevens.edu 
+              LinkedIn Profile
               <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center group-hover:scale-125 transition-transform">
                 <ArrowRight size={32} />
               </div>

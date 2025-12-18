@@ -1,3 +1,4 @@
+
 import { Project, NavItem, Publication, Experience, Education, SkillCategory, Hackathon, Certificate } from './types.ts';
 import { Linkedin, Mail } from 'lucide-react';
 
@@ -203,5 +204,4 @@ export const SKILLS: SkillCategory[] = [
 
 export const SOCIAL_LINKS = [
   { icon: Linkedin, href: "https://linkedin.com/in/atharva2004", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:asawant10@stevens.edu", label: "Email" },
 ];
