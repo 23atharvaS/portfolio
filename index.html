@@ -85,6 +85,7 @@
         -webkit-backdrop-filter: saturate(180%) blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.08);
       }
+      /* Enhanced Mesh Gradient / Bloom Light */
       .mesh-gradient {
         position: fixed;
         top: 0;
@@ -92,7 +93,9 @@
         width: 100%;
         height: 100%;
         z-index: -1;
-        background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(0, 113, 227, 0.15) 0%, transparent 40%);
+        background: 
+          radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(0, 113, 227, 0.18) 0%, transparent 80%),
+          radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(0, 113, 227, 0.1) 0%, transparent 50%);
         pointer-events: none;
       }
     </style>
@@ -113,7 +116,6 @@
     <div class="mesh-gradient" id="mesh"></div>
     <div id="root"></div>
     
-    <!-- Explicitly load the entry point with extension -->
     <script type="module" src="index.tsx"></script>
 
     <script>
@@ -127,8 +129,6 @@
       document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        mesh.style.setProperty('--mouse-x', mouseX + 'px');
-        mesh.style.setProperty('--mouse-y', mouseY + 'px');
       });
 
       const animate = () => {
@@ -140,6 +140,11 @@
         dot.style.transform = `translate(${dotX}px, ${dotY}px)`;
         circle.style.left = circX + 'px';
         circle.style.top = circY + 'px';
+        
+        // Use smoothed circX/Y for background bloom light to give it a liquid feel
+        mesh.style.setProperty('--mouse-x', circX + 'px');
+        mesh.style.setProperty('--mouse-y', circY + 'px');
+        
         requestAnimationFrame(animate);
       };
       animate();

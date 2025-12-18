@@ -151,10 +151,10 @@ const App: React.FC = () => {
                             <Wrapper 
                                 key={res.id} 
                                 {...wrapperProps}
-                                className={`block relative min-h-[250px] p-10 rounded-[2.5rem] bg-black/5 hover:bg-black transition-all duration-700 group overflow-hidden ${isLink ? 'interactive' : ''}`}
+                                className={`block relative min-h-[250px] p-10 rounded-[2.5rem] bg-black/5 transition-all duration-700 group overflow-hidden ${isLink ? 'interactive hover:bg-black' : ''}`}
                             >
-                                {/* Default Content */}
-                                <div className="relative z-10 group-hover:opacity-0 group-hover:scale-95 group-hover:-translate-y-4 transition-all duration-500 ease-in-out">
+                                {/* Default Content - transformations only applied if it's a link */}
+                                <div className={`relative z-10 transition-all duration-500 ease-in-out ${isLink ? 'group-hover:opacity-0 group-hover:scale-95 group-hover:-translate-y-4' : ''}`}>
                                     <h3 className="text-2xl font-display font-bold mb-4">{res.title}</h3>
                                     <p className="text-black/60 leading-relaxed font-light">
                                       {res.description}
