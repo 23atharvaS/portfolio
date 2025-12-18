@@ -140,7 +140,7 @@ const App: React.FC = () => {
              </FadeIn>
              
              <FadeIn delay={200}>
-                <h2 className="text-5xl font-display font-bold mb-16 tracking-tighter">Inquiry & <br /> Discovery.</h2>
+                <h2 className="text-5xl font-display font-bold mb-16 tracking-tighter">Research.</h2>
                 <div className="space-y-12">
                     {RESEARCH.map(res => {
                         const isLink = !!res.link;
