@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Atharva Sawant | AI/ML Portfolio</title>
+    <meta name="description" content="Portfolio of Atharva Sawant - AI/ML Engineer" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Space Grotesk', 'sans-serif'],
+            },
+            colors: {
+              background: '#000000', 
+              surface: '#121212',
+              primary: '#FFFFFF',
+              secondary: '#A1A1A6',
+              accent: '#0071E3',
+            },
+            animation: {
+              'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            }
+          }
+        }
+      }
+    </script>
+    
+    <style>
+      * {
+        cursor: none !important;
+      }
+      html {
+        scroll-behavior: smooth;
+        background: #000000;
+        color: white;
+      }
+      body {
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      #cursor-dot {
+        width: 8px;
+        height: 8px;
+        background: white;
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 10001;
+        transition: transform 0.1s ease-out;
+        /* Blend mode ensures white turns black on white surfaces */
+        mix-blend-mode: difference;
+      }
+      #cursor-circle {
+        width: 40px;
+        height: 40px;
+        border: 1.5px solid white;
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 10000;
+        transition: width 0.3s, height 0.3s, background 0.3s, transform 0.15s ease-out, border-color 0.3s;
+        transform: translate(-50%, -50%);
+        /* Blend mode ensures border turns black on white surfaces */
+        mix-blend-mode: difference;
+      }
+      .hover-active #cursor-circle {
+        width: 100px;
+        height: 100px;
+        background: white;
+        border-color: transparent;
+      }
+      .hover-active #cursor-dot {
+        opacity: 0;
+      }
+      .glass {
+        background: rgba(20, 20, 20, 0.6);
+        backdrop-filter: saturate(180%) blur(20px);
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .mesh-gradient {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(0, 113, 227, 0.15) 0%, transparent 40%);
+        pointer-events: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
+  }
+}
+</script>
+</head>
+  <body class="font-sans">
+    <div id="cursor-dot"></div>
+    <div id="cursor-circle"></div>
+    <div class="mesh-gradient" id="mesh"></div>
+    <div id="root"></div>
+    <script>
+      const dot = document.getElementById('cursor-dot');
+      const circle = document.getElementById('cursor-circle');
+      const mesh = document.getElementById('mesh');
+      let mouseX = 0, mouseY = 0;
+      let dotX = 0, dotY = 0;
+      let circX = 0, circY = 0;
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        mesh.style.setProperty('--mouse-x', mouseX + 'px');
+        mesh.style.setProperty('--mouse-y', mouseY + 'px');
+      });
+
+      const animate = () => {
+        dotX += (mouseX - dotX) * 0.2;
+        dotY += (mouseY - dotY) * 0.2;
+        circX += (mouseX - circX) * 0.1;
+        circY += (mouseY - circY) * 0.1;
+
+        dot.style.transform = `translate(${dotX}px, ${dotY}px)`;
+        circle.style.left = circX + 'px';
+        circle.style.top = circY + 'px';
+        requestAnimationFrame(animate);
+      };
+      animate();
+
+      document.addEventListener('mouseover', (e) => {
+        if (e.target.closest('a, button, .interactive')) document.body.classList.add('hover-active');
+      });
+      document.addEventListener('mouseout', (e) => {
+        if (e.target.closest('a, button, .interactive')) document.body.classList.remove('hover-active');
+      });
+    </script>
+  </body>
+</html>
