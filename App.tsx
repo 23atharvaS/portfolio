@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card } from './components/Card.tsx';
 import { Footer } from './components/Footer.tsx';
-import { Navbar } from './components/Navbar.tsx';
 import { FadeIn } from './components/FadeIn.tsx';
 import { PROJECTS, EXPERIENCE, EDUCATION, SKILLS, RESEARCH } from './constants.ts';
 import { ArrowRight, Sparkles, Binary, Layers, Globe2, ArrowUpRight, FileText } from 'lucide-react';
@@ -9,8 +8,6 @@ import { ArrowRight, Sparkles, Binary, Layers, Globe2, ArrowUpRight, FileText } 
 const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-background text-primary selection:bg-accent selection:text-white">
-      <Navbar />
-      
       {/* Hero: Immersive Launch Style */}
       <section id="about" className="relative h-screen px-6 flex flex-col justify-center items-center text-center overflow-hidden">
         <FadeIn delay={400}>
