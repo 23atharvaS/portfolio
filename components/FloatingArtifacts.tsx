@@ -97,7 +97,7 @@ export const FloatingArtifacts: React.FC = () => {
   return (
     <div 
       ref={containerRef}
-      className="fixed inset-0 pointer-events-none z-[45] overflow-hidden select-none"
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none"
     >
       <style>{`
         .artifact-node {
@@ -134,7 +134,6 @@ export const FloatingArtifacts: React.FC = () => {
             style={{
               left: `${art.x}%`,
               top: `${art.y}%`,
-              // Using CSS variables to handle hover scaling alongside the parallax translation
               transform: `translate3d(0, ${-translateY}px, 0) scale(calc(${art.size} * var(--hover-scale, 1))) rotate(${art.rotation}deg)`,
               filter: isDragging ? 'blur(0px)' : `blur(var(--hover-blur, ${art.blur}px))`,
               opacity: isDragging ? 1 : `var(--hover-opacity, ${art.opacity})`,

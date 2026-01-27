@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card } from './components/Card.tsx';
 import { Footer } from './components/Footer.tsx';
@@ -8,27 +7,41 @@ import { PROJECTS, EXPERIENCE, EDUCATION, SKILLS, RESEARCH } from './constants.t
 import { ArrowRight, Sparkles, Binary, Layers, Globe2, ArrowUpRight, FileText } from 'lucide-react';
 
 const App: React.FC = () => {
+  const scrollToWork = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const element = document.getElementById('work');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background text-primary selection:bg-accent selection:text-white relative">
-      {/* Floating Artifacts Layer - Interactivity is enabled here */}
+      {/* Floating Artifacts Layer */}
       <FloatingArtifacts />
       
       {/* Hero Section */}
-      <section id="about" className="relative h-screen px-6 flex flex-col justify-center items-center text-center overflow-hidden z-10 pointer-events-none">
-        <FadeIn delay={400} className="pointer-events-auto">
-          <h1 className="font-display text-[12vw] md:text-[8vw] font-bold tracking-[-0.05em] length-[0.85] mb-8">
+      <section id="about" className="relative h-screen px-6 flex flex-col justify-center items-center text-center overflow-hidden z-20">
+        <FadeIn delay={400} className="relative z-30">
+          <h1 className="font-display text-[12vw] md:text-[8vw] font-bold tracking-[-0.05em] leading-[0.85] mb-8">
             Atharva <br />
             <span className="text-secondary/20">Sawant.</span>
           </h1>
         </FadeIn>
 
-        <FadeIn delay={600} className="max-w-2xl pointer-events-auto">
+        <FadeIn delay={600} className="max-w-2xl relative z-30">
           <p className="text-xl md:text-2xl font-light text-secondary leading-relaxed tracking-tight mb-12">
             Applied Artificial Intelligence Engineer at <span className="text-white font-medium">Stevens Institute of Technology</span>. 
             Optimizing high-performance neural networks for real-time impact.
           </p>
           <div className="flex flex-wrap justify-center gap-6 md:gap-10">
-            <a href="#work" className="interactive text-lg font-bold border-b-2 border-white pb-1 hover:text-accent hover:border-accent transition-all">Explore Work</a>
+            <a 
+              href="#work" 
+              onClick={scrollToWork}
+              className="interactive text-lg font-bold border-b-2 border-white pb-1 hover:text-accent hover:border-accent transition-all"
+            >
+              Explore Work
+            </a>
             <a 
               href="https://drive.google.com/file/d/1b01zONIliSgGfxU9iaIdcp96FJsxWeNk/view?usp=sharing" 
               target="_blank" 
@@ -37,7 +50,6 @@ const App: React.FC = () => {
             >
               <FileText size={20} /> Get Resume
             </a>
-            <a href="mailto:asawant10@stevens.edu" className="interactive text-lg font-bold text-secondary hover:text-white transition-all">Get in Touch</a>
           </div>
         </FadeIn>
         
@@ -62,7 +74,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Experience Section - Now using the same Glassmorphism Style */}
+      {/* Experience Section - Glassmorphism Style */}
       <section id="experience" className="relative py-48 bg-white/[0.03] backdrop-blur-3xl border border-white/10 text-white rounded-[5rem] z-10 mx-4 md:mx-10 my-20">
         <div className="max-w-6xl mx-auto px-6">
           <FadeIn className="mb-32">
@@ -192,19 +204,18 @@ const App: React.FC = () => {
       {/* Contact Section */}
       <section id="contact" className="relative py-64 px-6 text-center z-10">
         <FadeIn>
-          <h2 className="text-[15vw] md:text-[10vw] font-display font-bold tracking-tighter leading-none mb-24">
+          <h2 className="text-[15vw] md:text-[10vw] font-display font-bold tracking-tighter leading-none mb-12">
             LET'S <br /> <span className="text-secondary/20">CONNECT.</span>
           </h2>
+          
           <div className="flex flex-col items-center gap-12">
             <a 
-              href="https://linkedin.com/in/atharva2004"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="interactive group flex items-center gap-6 text-3xl md:text-5xl font-display font-bold transition-all"
+              href="mailto:asawant10@stevens.edu"
+              className="interactive group flex flex-col md:flex-row items-center gap-6 text-3xl md:text-6xl font-display font-bold transition-all hover:text-accent"
             >
-              LinkedIn Profile
-              <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center group-hover:scale-125 transition-transform">
-                <ArrowRight size={32} />
+              <span>asawant10@stevens.edu</span>
+              <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-accent flex items-center justify-center group-hover:scale-110 transition-transform">
+                <ArrowRight className="w-8 h-8 md:w-12 md:h-12" />
               </div>
             </a>
           </div>
