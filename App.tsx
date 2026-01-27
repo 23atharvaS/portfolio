@@ -43,7 +43,7 @@ const App: React.FC = () => {
               Explore Work
             </a>
             <a 
-              href="https://drive.google.com/file/d/1b01zONIliSgGfxU9iaIdcp96FJsxWeNk/view?usp=sharing" 
+              href="https://drive.google.com/file/d/1OG0ZFGNyy4OWVRgKkpKssfd20vi5Bfe7/view?usp=sharing" 
               target="_blank" 
               rel="noopener noreferrer"
               className="interactive flex items-center gap-2 text-lg font-bold text-accent hover:text-white transition-all"
